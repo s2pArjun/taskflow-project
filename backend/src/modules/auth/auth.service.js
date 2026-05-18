@@ -14,7 +14,8 @@ const register = async ({ name, email, password, role }) => {
   const user = await User.create({ name, email, password_hash, role: role || 'user' });
 
   const token = signToken({ id: user.id, role: user.role });
-  return { user, token };
+  const { password_hash: _, ...userSafe } = user.toJSON();
+  return { user: userSafe, token };
 };
 
 const login = async ({ email, password }) => {
