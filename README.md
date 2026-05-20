@@ -2,6 +2,17 @@
 
 A scalable REST API with JWT authentication, role-based access control, and a React frontend.
 
+
+## Documentation
+
+- [Project Documentation](docs/TaskFlow_Documentation.docx)
+- [Project Screenshots](docs/TaskFlow_Screenshots.docx)
+
+## PDF Versions
+
+- [Documentation PDF](docs/TaskFlow_Documentation.pdf)
+- [Screenshots PDF](docs/TaskFlow_Screenshots.pdf)
+
 ## Tech Stack
 
 | Layer | Tech |
@@ -18,16 +29,13 @@ A scalable REST API with JWT authentication, role-based access control, and a Re
 
 ## Getting Started
 
-### Prerequisites
-- Node.js 18+
-- PostgreSQL 14+ running locally
 
 ### 1. Backend Setup
 
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env with your DB credentials and a strong JWT_SECRET
+
 npm install
 npm run dev
 ```
@@ -78,20 +86,7 @@ All routes prefixed with `/api/v1`.
 | DELETE | `/admin/users/:id` | Admin | Delete a user |
 | GET | `/admin/tasks` | Admin | List all tasks |
 
----
 
-## Docker Deployment
-
-```bash
-# From project root
-docker-compose up --build
-```
-
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:5000`
-- Swagger: `http://localhost:5000/api/v1/docs`
-
----
 
 ## Environment Variables
 
@@ -109,13 +104,3 @@ docker-compose up --build
 
 ---
 
-## Security Notes
-
-- Passwords are hashed with bcrypt (salt rounds: 12)
-- JWT stored in React memory — never `localStorage`
-- Rate limiting on `/auth/*` routes (20 req / 15 min)
-- Helmet sets security headers
-- Input validation via Joi on every route
-- Ownership check on task mutations — users can't touch others' tasks
-
-See `scalability-note.md` for scaling strategy.
